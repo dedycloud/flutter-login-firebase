@@ -4,30 +4,23 @@ import 'package:px/domain/login/login_repository.dart';
 import 'package:px/presentation/screens/home/home_screen.dart';
 import 'package:px/presentation/screens/login/bloc/Authentication/authentication_bloc.dart';
 import 'package:px/presentation/screens/login/login_screen.dart';
-class Auth extends StatefulWidget {
+class Authentication extends StatefulWidget {
+  final UserRepository _userRepository;
 
-  State<Auth> createState() => _AuthState();
+  Authentication({Key key, @required UserRepository userRepository})
+      : assert(userRepository != null),
+        _userRepository = userRepository,
+        super(key: key);
+
+  State<Authentication> createState() => _AuthenticationState();
 }
 
-class _AuthState extends State<Auth> {
-  final UserRepository _userRepository = UserRepository();
-  AuthenticationBloc _authenticationBloc;
-
-
-  @override
-  void initState() {
-    super.initState();
-    _authenticationBloc = AuthenticationBloc(userRepository: _userRepository);
-    _authenticationBloc.add(AppStarted());
-  }
+class _AuthenticationState extends State<Authentication> {
+  UserRepository get _userRepository => widget._userRepository;
 
   @override
   Widget build(BuildContext context) {
-      return BlocProvider<AuthenticationBloc>(
-          create: (BuildContext context) => AuthenticationBloc(userRepository: _userRepository),
-        child: Scaffold(
-           body:  BlocBuilder(
-            bloc: _authenticationBloc,
+      return BlocBuilder<AuthenticationBloc, AuthenticationState>(
             builder: (BuildContext context, AuthenticationState state) {
               if (state is Uninitialized) {
                 return Center(child: Container(child: Text('loading'),),);
@@ -38,10 +31,9 @@ class _AuthState extends State<Auth> {
               if (state is Authenticated) {
                 return HomeScreen(name: state.displayName);
               }
+              return null;
             },
-          ),
-        ),
-      );
+          );
   }
 
 

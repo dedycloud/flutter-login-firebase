@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:px/domain/login/login_repository.dart';
@@ -19,10 +20,10 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  String token = '';
   LoginBloc _loginBloc;
   bool _isHidePassword = true;
   void _togglePasswordVisibility() {
@@ -69,6 +70,12 @@ class _LoginFormState extends State<LoginForm> {
   @override
   void initState() {
     super.initState();
+
+    _firebaseMessaging.getToken().then((String token) {
+      setState(() {
+        this.token = token;
+      });
+    });
     _loginBloc = BlocProvider.of<LoginBloc>(context);
     _emailController.addListener(_onEmailChanged);
     _passwordController.addListener(_onPasswordChanged);
@@ -77,6 +84,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('token: $token');
     return BlocListener(
       bloc: _loginBloc,
       listener: (BuildContext context,LoginState state){

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:px/common/config/injector.dart';
+import 'package:px/data/login/user_repository.dart';
 import 'package:px/domain/login/login_repository.dart';
 import 'package:px/presentation/screens/login/Authentication.dart';
 import 'package:px/presentation/screens/login/bloc/Authentication/authentication_bloc.dart';
-import 'package:px/presentation/screens/login/bloc/login/login_bloc.dart';
-import 'package:px/presentation/screens/login/login_screen.dart';
+
 import 'package:px/presentation/screens/register/bloc/register_bloc.dart';
 import 'package:px/presentation/screens/register/register_screen.dart';
 
@@ -36,7 +36,12 @@ class RouteGenerator {
     return SplashScreen();
   }
   static Widget _buildAuthenticate() {
-    return Auth();
+    final UserRepository userRepository = UserRepositoryImpl();
+    return   BlocProvider(
+      create: (context) => AuthenticationBloc(userRepository: userRepository)
+        ..add(AppStarted()),
+      child: Authentication(userRepository: userRepository,),
+    );
   }
 
   static Widget _buildRegisterScreen() {

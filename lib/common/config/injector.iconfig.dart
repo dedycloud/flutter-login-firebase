@@ -14,8 +14,6 @@ import 'package:dio/src/dio.dart';
 import 'package:px/data/employee/repository/employee_repository.dart';
 import 'package:px/domain/employee/repository/employee_repository.dart';
 import 'package:px/domain/employee/usecases/employee_usecases.dart';
-import 'package:px/presentation/screens/login/bloc/login/login_bloc.dart';
-import 'package:px/domain/login/login_repository.dart';
 import 'package:px/presentation/screens/register/bloc/register_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -45,7 +43,6 @@ void $initGetIt({String environment}) {
         networkCheck: getIt<NetworkCheck>()))
     ..registerLazySingleton<GetEmployeeUsecase>(() =>
         GetEmployeeUsecase(employeeRepository: getIt<EmployeeRepository>()))
-    ..registerFactory<LoginBloc>(
-        () => LoginBloc(userRepository: getIt<UserRepository>()))
-    ..registerFactory<RegisterBloc>(() => RegisterBloc(getEmployeeUsecase: getIt<GetEmployeeUsecase>()));
+    ..registerFactory<RegisterBloc>(
+        () => RegisterBloc(getEmployeeUsecase: getIt<GetEmployeeUsecase>()));
 }
