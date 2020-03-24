@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "907799038777",
+    "firebase_url": "https://px-platform.firebaseio.com",
+    "project_id": "px-platform",
+    "storage_bucket": "px-platform.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907799038777:android:1cab1ecb77ab5aba80b6e8",
+        "android_client_info": {
+          "package_name": "com.example.px"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907799038777-v91ch9r4p3c0etasvs0j1136emj6ckun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWshLzlS9YebI87TyUnZN3OeejgTuYWWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907799038777-v91ch9r4p3c0etasvs0j1136emj6ckun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,18 @@
+{result: {employee: [
+      {candidateId: 1, address: [
+          {city: Jakarta Pusat, country: Indonesia, kecamatan: Bendungan Hilir, kelurahan: Bendungan Hilir, letterAddress: Jl Bendungan Hilir, province: DKI Jakarta, RT: 01, RW: 01, street: Jl Bendungan Hilir, type: KTP, zipCode: asds
+          }
+        ], benefit: BPJS, birthDate: 1995-01-01, birthPlace: Jakarta, company: infoflow, education: [
+          {degree: S1, discipline: informatics, endDate: 2019-01-01, faculty: teknik, schoolName: Institute X, startDate: 2015-01-01
+          }
+        ], emailAddressOffice: candidate@dkatalis.com, emailAddressPersonal: candidate@gmail.com, firstName: candidate, fullName: candidate, gender: M, identity: [
+          {expired: null, file: null, number: 317431743174, type: KTP
+          }
+        ], isIntro: false, isSigned: false, isWNA: false, jobs: Full Stack Engineer, joinDate: 2019-09-09, lastName: candidate, middleName: candidate, onBoardingDate: 2019-10-10, phoneNumber: null, recruiter: priyanka, renumer: [
+          {currency: IDR, type: gross, value: 10000000
+          }
+        ]
+      }
+    ]
+  }
+}
