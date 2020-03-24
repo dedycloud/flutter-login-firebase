@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:px/common/config/injector.dart';
+import 'package:px/domain/login/login_repository.dart';
+import 'package:px/presentation/screens/login/Authentication.dart';
+import 'package:px/presentation/screens/login/bloc/Authentication/authentication_bloc.dart';
+import 'package:px/presentation/screens/login/bloc/login/login_bloc.dart';
 import 'package:px/presentation/screens/login/login_screen.dart';
 import 'package:px/presentation/screens/register/bloc/register_bloc.dart';
 import 'package:px/presentation/screens/register/register_screen.dart';
@@ -21,7 +25,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => _buildRegisterScreen());
 
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (context) => _buildLoginScreen());
+        return MaterialPageRoute(builder: (context) => _buildAuthenticate());
 
       default:
         return MaterialPageRoute(builder: (_) => _buildErrorScreen());
@@ -31,9 +35,8 @@ class RouteGenerator {
   static Widget _buildSplashScreen() {
     return SplashScreen();
   }
-
-  static Widget _buildLoginScreen() {
-    return LoginScreen();
+  static Widget _buildAuthenticate() {
+    return Auth();
   }
 
   static Widget _buildRegisterScreen() {
